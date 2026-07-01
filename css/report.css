@@ -159,6 +159,7 @@ h3.ah-h3 { font-size: var(--font-size-lg); }
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
 }
 .ah-thumb {
+  margin: 0;
   background: var(--color-white);
   border: 1px solid var(--color-light-d1);
   border-radius: var(--ah-radius);
@@ -167,7 +168,7 @@ h3.ah-h3 { font-size: var(--font-size-lg); }
   display: flex; flex-direction: column;
 }
 .ah-thumb__img {
-  display: block; width: 100%; height: 150px; object-fit: contain; object-position: center;
+  display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: contain; object-position: center;
   padding: var(--sp-2); background: var(--color-light-l1);
   border-bottom: 1px solid var(--color-light-d1);
 }
