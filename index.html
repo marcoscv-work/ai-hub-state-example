@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Hub: Project State Report</title>
+<meta name="description" content="Cross-source state of Liferay AI Hub: Figma design, Jira delivery, GitHub pull requests, and the ai-hub module code map.">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/report.css">
+</head>
+<body>
+<a class="ah-skip" href="#main">Skip to content</a>
+
+<header class="ah-topbar">
+  <div class="ah-topbar__inner">
+    <div class="ah-brand">
+      <span class="ah-brand__mark" aria-hidden="true">AH</span>
+      <span>
+        <span class="ah-brand__title">Liferay AI Hub</span><br>
+        <span class="ah-brand__sub">Project State Report</span>
+      </span>
+    </div>
+    <p class="ah-topbar__meta">
+      Generated 1 Jul 2026<br>
+      Scope: design + product (all projects) + repo + code
+    </p>
+  </div>
+</header>
+
+<main id="main" class="ah-wrap">
+
+  <p class="ah-eyebrow">Executive overview</p>
+  <h1 class="ah-h1">AI Hub is mid-commercialization, moving open beta to paid public beta</h1>
+  <p class="ah-lead">This report cross-references four live sources: design in the AI Hub Figma project,
+    delivery in Jira, engineering in the <code>liferay-ai-hub/liferay-portal</code> fork, and the
+    <code>ai-hub</code> module in the Liferay codebase. They agree on where the product is heading: billing
+    and metering, safety guardrails, agentic content generation, and governance (permissions and audit), with
+    infrastructure maturing from SaaS toward PaaS &mdash; and design consistently runs a stage ahead of public
+    code.</p>
+
+  <div class="ah-status" role="note">
+    <span class="ah-status__dot" aria-hidden="true"></span>
+    <div>
+      <div class="ah-status__label">Overall status: At Risk / High Intensity</div>
+      <p class="ah-status__text">Strong throughput (paid public beta marketplace integration shipped, content
+        generation features landing), but a flagged cross-team dependency risk, three failing CI checks on
+        open PRs, and a documentation backlog trailing engineering.</p>
+    </div>
+  </div>
+
+  <div class="ah-kpis">
+    <div class="ah-kpi ah-kpi--accent">
+      <div class="ah-kpi__num">160<small>+</small></div>
+      <div class="ah-kpi__label">Open Jira items referencing AI Hub (reviewed set, 200+ in total)</div>
+    </div>
+    <div class="ah-kpi ah-kpi--danger">
+      <div class="ah-kpi__num">32</div>
+      <div class="ah-kpi__label">Critical-priority open Jira items</div>
+    </div>
+    <div class="ah-kpi ah-kpi--success">
+      <div class="ah-kpi__num">60<small>+</small></div>
+      <div class="ah-kpi__label">Jira items completed in the last 30 days</div>
+    </div>
+    <div class="ah-kpi">
+      <div class="ah-kpi__num">26</div>
+      <div class="ah-kpi__label">Open pull requests (fork)</div>
+    </div>
+    <div class="ah-kpi">
+      <div class="ah-kpi__num">306</div>
+      <div class="ah-kpi__label">Closed pull requests (fork)</div>
+    </div>
+    <div class="ah-kpi ah-kpi--warning">
+      <div class="ah-kpi__num">3</div>
+      <div class="ah-kpi__label">Open PRs with failing CI (in sampled set)</div>
+    </div>
+    <div class="ah-kpi ah-kpi--accent">
+      <div class="ah-kpi__num">7</div>
+      <div class="ah-kpi__label">Verified <code>ai-hub</code> code modules</div>
+    </div>
+    <div class="ah-kpi">
+      <div class="ah-kpi__num">6</div>
+      <div class="ah-kpi__label">API domain packages (agent, guardrail, quota, workflow.node, config, util)</div>
+    </div>
+    <div class="ah-kpi ah-kpi--accent">
+      <div class="ah-kpi__num">27</div>
+      <div class="ah-kpi__label">Figma design files in the AI Hub project (10 tied to LPD keys)</div>
+    </div>
+  </div>
+
+  <!-- ================= JIRA ================= -->
+  <section class="ah-section" aria-labelledby="jira-h">
+    <p class="ah-eyebrow">Source 1 · Delivery</p>
+    <h2 class="ah-h2" id="jira-h">Jira snapshot</h2>
+    <p class="ah-muted">AI Hub is not a single Jira project. Work is spread across projects and matched here by
+      text reference. Counts are floor values from the reviewed set.</p>
+
+    <div class="ah-grid-2" style="margin-top:var(--sp-4)">
+      <div class="ah-card">
+        <h3 class="ah-h3">Open work by project</h3>
+        <div class="ah-bars" role="img" aria-label="Open AI Hub items by project: LPD 102, LRDOCS 13, LCI 12, LPDOPS 6, GCGT 5, other projects 22.">
+          <div class="ah-bar"><span class="ah-bar__name">LPD (product)</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:100%"></span></span><span class="ah-bar__val">102</span></div>
+          <div class="ah-bar"><span class="ah-bar__name">LRDOCS (docs)</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:13%"></span></span><span class="ah-bar__val">13</span></div>
+          <div class="ah-bar"><span class="ah-bar__name">LCI (cloud)</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:12%"></span></span><span class="ah-bar__val">12</span></div>
+          <div class="ah-bar"><span class="ah-bar__name">LPDOPS</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:6%"></span></span><span class="ah-bar__val">6</span></div>
+          <div class="ah-bar"><span class="ah-bar__name">GCGT</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:5%"></span></span><span class="ah-bar__val">5</span></div>
+          <div class="ah-bar"><span class="ah-bar__name">Other (12+)</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:22%"></span></span><span class="ah-bar__val">22</span></div>
+        </div>
+      </div>
+      <div class="ah-card">
+        <h3 class="ah-h3">Open work by priority</h3>
+        <div class="ah-bars" role="img" aria-label="Open AI Hub items by priority: Low 74, Critical 32, High 26, Medium 26.">
+          <div class="ah-bar ah-bar--low"><span class="ah-bar__name">Low</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:100%"></span></span><span class="ah-bar__val">74</span></div>
+          <div class="ah-bar ah-bar--crit"><span class="ah-bar__name">Critical</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:43%"></span></span><span class="ah-bar__val">32</span></div>
+          <div class="ah-bar ah-bar--high"><span class="ah-bar__name">High</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:35%"></span></span><span class="ah-bar__val">26</span></div>
+          <div class="ah-bar ah-bar--med"><span class="ah-bar__name">Medium</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:35%"></span></span><span class="ah-bar__val">26</span></div>
+        </div>
+        <p class="ah-muted" style="margin-top:var(--sp-4);font-size:var(--font-size-sm)">Flow split: roughly 96 in progress vs 64 to do.</p>
+      </div>
+    </div>
+
+    <div class="ah-card" style="margin-top:var(--sp-4)">
+      <h3 class="ah-h3">Recently shipped (last 30 days)</h3>
+      <ul class="ah-list">
+        <li><span class="ah-key">SFDC-1307</span> AI Hub Paid Public Beta, Marketplace integration (commercial milestone).</li>
+        <li>Content generation landing: Site Generator wizard backend and page (LPD-95386, LPD-87351, LPD-87298), HTTP Request Node UI (LPD-95316).</li>
+        <li>Subscription lifecycle propagation, Suspend / Stop / Renew (LPD-90607).</li>
+        <li>RAG content-retrieve event pipeline (LPD-93578, LPD-94974, LPD-96133).</li>
+        <li>Provisioning fixes: config persists on reboot (LPD-94843), provisioned-user email (LPD-96039).</li>
+        <li>Design and accessibility: Dark Mode activation point (LPD-53889).</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= GITHUB ================= -->
+  <section class="ah-section" aria-labelledby="gh-h">
+    <p class="ah-eyebrow">Source 2 · Engineering</p>
+    <h2 class="ah-h2" id="gh-h">GitHub pull requests</h2>
+    <p class="ah-muted">Repository <code>liferay-ai-hub/liferay-portal</code>, a public fork of
+      <code>liferay/liferay-portal</code>. 26 open, 306 closed, 30 issues, 42 labels, 0 milestones.
+      PR titles map directly to LPD Jira keys.</p>
+
+    <div class="ah-card" style="margin-top:var(--sp-4)">
+      <h3 class="ah-h3">Open PRs by theme</h3>
+      <div class="ah-bars" role="img" aria-label="Open pull requests by theme: content generation and page builder 7, guardrails and Model Armor 4, permissions and roles 4, audit events 2, assistant chat 2, design and frontend 2, metering 1.">
+        <div class="ah-bar"><span class="ah-bar__name">Content / Page Builder</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:100%"></span></span><span class="ah-bar__val">7</span></div>
+        <div class="ah-bar ah-bar--crit"><span class="ah-bar__name">Guardrails / Armor</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:57%"></span></span><span class="ah-bar__val">4</span></div>
+        <div class="ah-bar ah-bar--med"><span class="ah-bar__name">Permissions / roles</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:57%"></span></span><span class="ah-bar__val">4</span></div>
+        <div class="ah-bar ah-bar--high"><span class="ah-bar__name">Audit events</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:29%"></span></span><span class="ah-bar__val">2</span></div>
+        <div class="ah-bar"><span class="ah-bar__name">Assistant chat</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:29%"></span></span><span class="ah-bar__val">2</span></div>
+        <div class="ah-bar"><span class="ah-bar__name">Design / FE</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:29%"></span></span><span class="ah-bar__val">2</span></div>
+        <div class="ah-bar ah-bar--low"><span class="ah-bar__name">Metering</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:14%"></span></span><span class="ah-bar__val">1</span></div>
+      </div>
+    </div>
+
+    <div class="ah-tablewrap">
+      <table class="ah-table">
+        <caption>Open pull requests (most recent shown; CI and review state as reported on the list)</caption>
+        <thead>
+          <tr><th scope="col">PR</th><th scope="col">Jira / title</th><th scope="col">Author</th><th scope="col">State</th><th scope="col">Comments</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="ah-key">#405</td><td>LPD-90634 Enable Permissions Modal on each Data Source entry</td><td>mariuo</td><td><span class="ah-pill ah-pill--ok">CI pass</span></td><td>9</td></tr>
+          <tr><td class="ah-key">#404</td><td>LPD-90462 Enable Permissions Modal on each Agent entry</td><td>mariuo</td><td><span class="ah-pill ah-pill--ok">CI pass</span></td><td>14</td></tr>
+          <tr><td class="ah-key">#403</td><td>LPD-90977 + LPD-79411 (HTTP Request Kaleo Node) <span class="ah-pill ah-pill--warn">WIP</span></td><td>fabian-bouche-liferay</td><td><span class="ah-pill ah-pill--neutral">No CI</span></td><td>11</td></tr>
+          <tr><td class="ah-key">#402</td><td>LPD-89838 [BE] AI_AGENT_CONFIG_CHANGE audit event</td><td>pedro-oliveira446</td><td><span class="ah-pill ah-pill--fail">CI fail</span></td><td>8</td></tr>
+          <tr><td class="ah-key">#401</td><td>LPD-90369 [BE] Model Armor template on Guardrails create</td><td>MrJohn1911</td><td><span class="ah-pill ah-pill--fail">CI fail</span></td><td>5</td></tr>
+          <tr><td class="ah-key">#400</td><td>LPD-90632 Enable Permissions Modal on each Instruction entry</td><td>mariuo</td><td><span class="ah-pill ah-pill--ok">CI pass</span></td><td>20</td></tr>
+          <tr><td class="ah-key">#399</td><td>LPD-90670 [BE] AI Hub Agent Manager role on site initializer</td><td>DavysonMelo</td><td><span class="ah-pill ah-pill--ok">CI pass</span></td><td>7</td></tr>
+          <tr><td class="ah-key">#397</td><td>LPD-89874 [BE] AI_AGENT_EXECUTION audit event</td><td>pedro-oliveira446</td><td><span class="ah-pill ah-pill--warn">Changes requested</span></td><td>22</td></tr>
+          <tr><td class="ah-key">#396</td><td>LPD-90367 [FE] Relate a guardrail with an agent in the form <span class="ah-pill ah-pill--fe">frontend</span></td><td>MrJohn1911</td><td><span class="ah-pill ah-pill--ok">CI pass</span></td><td>8</td></tr>
+          <tr><td class="ah-key">#395</td><td>LPD-90364 [FE] Model Armor based Guardrails template UI <span class="ah-pill ah-pill--fe">frontend</span></td><td>MrJohn1911</td><td><span class="ah-pill ah-pill--fail">CI fail</span></td><td>52</td></tr>
+          <tr><td class="ah-key">#392</td><td>LPD-90368 [BE] Object definitions for Model Armor template</td><td>MrJohn1911</td><td><span class="ah-pill ah-pill--ok">CI pass</span></td><td>28</td></tr>
+          <tr><td class="ah-key">#387</td><td>LPD-78738 Update Workflow Designer visual styles for AI Hub <span class="ah-pill ah-pill--fe">frontend</span></td><td>ugeortiz</td><td><span class="ah-pill ah-pill--neutral">No CI</span></td><td>6</td></tr>
+          <tr><td class="ah-key">#374</td><td>LPD-89663 Add Assistant Chat to the content generator</td><td>DavysonMelo</td><td><span class="ah-pill ah-pill--ok">CI pass</span></td><td>11</td></tr>
+          <tr><td class="ah-key">#373</td><td>LPD-89208 Technical Task | Site Builder Agent</td><td>mariuo</td><td><span class="ah-pill ah-pill--ok">CI pass</span></td><td>23</td></tr>
+          <tr><td class="ah-key">#372</td><td>LPD-89207 Technical Task | Agents Foundation</td><td>abesousa</td><td><span class="ah-pill ah-pill--ok">CI pass</span></td><td>10</td></tr>
+          <tr><td class="ah-key">#371</td><td>LPD-87408 Use the CMS theme instead of the AI Hub <span class="ah-pill ah-pill--warn">WIP</span> <span class="ah-pill ah-pill--fe">frontend</span></td><td>Mylena-Rodrigues</td><td><span class="ah-pill ah-pill--neutral">No CI</span></td><td>5</td></tr>
+          <tr><td class="ah-key">#370</td><td>LPD-62272-2 Add AI Assistant Chat in the page editor</td><td>Mylena-Rodrigues</td><td><span class="ah-pill ah-pill--neutral">No CI</span></td><td>4</td></tr>
+          <tr><td class="ah-key">#369</td><td>LPD-86876 Generation and review workflow</td><td>DavysonMelo</td><td><span class="ah-pill ah-pill--ok">CI pass</span></td><td>24</td></tr>
+          <tr><td class="ah-key">#368</td><td>LPD-89366 Page Builder Wire</td><td>mariuo</td><td><span class="ah-pill ah-pill--ok">CI pass</span></td><td>14</td></tr>
+          <tr><td class="ah-key">#367</td><td>LPD-89224 Page Builder Converters</td><td>mariuo</td><td><span class="ah-pill ah-pill--ok">CI pass</span></td><td>10</td></tr>
+          <tr><td class="ah-key">#366</td><td>LPD-89345 Tag Vertex AI requests with company_id and user_id</td><td>ipeychev</td><td><span class="ah-pill ah-pill--info">feature</span></td><td>7</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ah-muted" style="margin-top:var(--sp-3);font-size:var(--font-size-sm)">
+      Attention on the failing checks (#402, #401, #395) and the changes-requested review (#397). PR #395
+      carries 52 comments, the most contested item in the open set.</p>
+  </section>
+
+  <!-- ================= CODE ================= -->
+  <section class="ah-section" aria-labelledby="code-h">
+    <p class="ah-eyebrow">Source 3 · Code</p>
+    <h2 class="ah-h2" id="code-h">Code map: the <code>ai-hub</code> module</h2>
+    <p class="ah-muted">Located at <code>modules/dxp/apps/ai-hub/</code> on branch <code>master</code>, present in both
+      the fork and the public parent repo. Module inventory verified via raw source.</p>
+
+    <div class="ah-mods">
+      <div class="ah-mod">
+        <div class="ah-mod__name">ai-hub-api</div>
+        <div class="ah-mod__desc">Public API. Exports agent, configuration, guardrail, quota, util, workflow.node.</div>
+        <div class="ah-mod__meta">com.liferay.ai.hub.api · v2.0.0</div>
+      </div>
+      <div class="ah-mod">
+        <div class="ah-mod__name">ai-hub-impl</div>
+        <div class="ah-mod__desc">Implementation. Integrates Google Cloud / Vertex AI, protobuf, netty.</div>
+        <div class="ah-mod__meta">com.liferay.ai.hub.impl · v1.0.6</div>
+      </div>
+      <div class="ah-mod">
+        <div class="ah-mod__name">ai-hub-web</div>
+        <div class="ah-mod__desc">Web UI layer for AI Hub.</div>
+        <div class="ah-mod__meta">Liferay AI Hub Web</div>
+      </div>
+      <div class="ah-mod">
+        <div class="ah-mod__name">ai-hub-rest-api</div>
+        <div class="ah-mod__desc">REST contract definitions.</div>
+        <div class="ah-mod__meta">Liferay AI Hub REST API</div>
+      </div>
+      <div class="ah-mod">
+        <div class="ah-mod__name">ai-hub-rest-impl</div>
+        <div class="ah-mod__desc">REST endpoint implementation.</div>
+        <div class="ah-mod__meta">Liferay AI Hub REST Implementation</div>
+      </div>
+      <div class="ah-mod">
+        <div class="ah-mod__name">ai-hub-rest-client</div>
+        <div class="ah-mod__desc">Generated REST client.</div>
+        <div class="ah-mod__meta">Liferay AI Hub REST Client</div>
+      </div>
+      <div class="ah-mod">
+        <div class="ah-mod__name">ai-hub-test</div>
+        <div class="ah-mod__desc">Integration and unit test module.</div>
+        <div class="ah-mod__meta">Liferay AI Hub Test</div>
+      </div>
+    </div>
+    <p class="ah-muted" style="margin-top:var(--sp-3);font-size:var(--font-size-sm)">
+      Note: <code>ai-hub-cell-web</code> is referenced by a recently completed ticket (LPD-87298) but is not yet
+      visible on public <code>master</code>, likely pending merge. The API package split (agent, guardrail,
+      quota, workflow.node) mirrors the delivery and PR themes almost one to one.</p>
+  </section>
+
+  <!-- ================= SIGNAL ALIGNMENT ================= -->
+  <section class="ah-section" aria-labelledby="matrix-h">
+    <p class="ah-eyebrow">Signature · Cross-source alignment</p>
+    <h2 class="ah-h2" id="matrix-h">Where the four sources agree</h2>
+    <p class="ah-muted">Reading the same product across design, delivery, engineering, and code. A filled dot means
+      the theme is strongly present in that source; a half dot means partial or indirect presence.</p>
+
+    <div class="ah-tablewrap">
+      <table class="ah-matrix">
+        <thead>
+          <tr><th scope="col">Theme</th><th scope="col">Design (Figma)</th><th scope="col">Jira</th><th scope="col">GitHub PRs</th><th scope="col">Code (API package)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Guardrails / Model Armor</td><td><span class="ah-dot ah-dot--on" title="Instructions &amp; Guardrails (LPD-74337)"></span></td><td><span class="ah-dot ah-dot--on" title="Strong"></span></td><td><span class="ah-dot ah-dot--on" title="Strong"></span></td><td><span class="ah-dot ah-dot--on" title="guardrail package"></span></td></tr>
+          <tr><td>Token metering &amp; billing</td><td><span class="ah-dot ah-dot--part" title="Metrics design (LPD-74333), usage not billing"></span></td><td><span class="ah-dot ah-dot--on"></span></td><td><span class="ah-dot ah-dot--part" title="Vertex tagging only"></span></td><td><span class="ah-dot ah-dot--on" title="quota package"></span></td></tr>
+          <tr><td>Agentic content generation</td><td><span class="ah-dot ah-dot--on" title="Create &amp; Edit Agents (LPD-74339), Workflow UIs"></span></td><td><span class="ah-dot ah-dot--on"></span></td><td><span class="ah-dot ah-dot--on"></span></td><td><span class="ah-dot ah-dot--on" title="agent, workflow.node"></span></td></tr>
+          <tr><td>Permissions &amp; audit</td><td><span class="ah-dot ah-dot--on" title="Audit Logs UI (LPD-91076), Admin chat history (LPD-95093)"></span></td><td><span class="ah-dot ah-dot--part"></span></td><td><span class="ah-dot ah-dot--on"></span></td><td><span class="ah-dot ah-dot--part" title="util, configuration"></span></td></tr>
+          <tr><td>SSO &amp; provisioning</td><td><span class="ah-dot ah-dot--off"></span></td><td><span class="ah-dot ah-dot--on"></span></td><td><span class="ah-dot ah-dot--off"></span></td><td><span class="ah-dot ah-dot--part" title="configuration"></span></td></tr>
+          <tr><td>Infrastructure SaaS to PaaS</td><td><span class="ah-dot ah-dot--off"></span></td><td><span class="ah-dot ah-dot--on"></span></td><td><span class="ah-dot ah-dot--off"></span></td><td><span class="ah-dot ah-dot--off"></span></td></tr>
+          <tr><td>Accessibility &amp; design</td><td><span class="ah-dot ah-dot--on" title="27 design files in the AI Hub project"></span></td><td><span class="ah-dot ah-dot--on"></span></td><td><span class="ah-dot ah-dot--part"></span></td><td><span class="ah-dot ah-dot--off"></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ah-muted" style="margin-top:var(--sp-3);font-size:var(--font-size-sm)">
+      Legend:
+      <span class="ah-dot ah-dot--on" aria-hidden="true"></span> strong &nbsp;
+      <span class="ah-dot ah-dot--part" aria-hidden="true"></span> partial &nbsp;
+      <span class="ah-dot ah-dot--off" aria-hidden="true"></span> not present in source.
+    </p>
+  </section>
+
+  <!-- ================= RISKS ================= -->
+  <section class="ah-section" aria-labelledby="risk-h">
+    <p class="ah-eyebrow">Attention</p>
+    <h2 class="ah-h2" id="risk-h">Risks and open questions</h2>
+    <div class="ah-alert ah-alert--danger" role="note">
+      <h3 class="ah-h3">Primary delivery risk</h3>
+      <p><span class="ah-key">LPDOPS-1854</span> (Critical, In Analysis): flagged risk of multiple unconfirmed
+      cross-team dependencies threatening the one.liferay timeline.</p>
+    </div>
+    <div class="ah-alert ah-alert--warn" role="note" style="margin-top:var(--sp-4)">
+      <h3 class="ah-h3">Engineering and docs</h3>
+      <ul>
+        <li>Three open PRs with failing CI (#402, #401, #395) and one changes-requested (#397).</li>
+        <li>Documentation backlog: a large critical LRDOCS queue trails shipped features (SSO, cost tracking,
+          cloud infra, homepage, role management, test suite).</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= FIGMA ================= -->
+  <section class="ah-section" aria-labelledby="figma-h">
+    <p class="ah-eyebrow">Source 4 · Design (captured)</p>
+    <h2 class="ah-h2" id="figma-h">Figma state: the AI Hub project</h2>
+    <p class="ah-muted">Figma project <code>490735323</code> (&ldquo;AI Hub&rdquo;), traversed via the REST API.
+      <strong>27 design files</strong> read (2 FigJam/Slides files skipped as unsupported by the file endpoint).
+      Ten files embed an <span class="ah-key">LPD</span> key in their name, which lets design join to Jira and to
+      GitHub. The remaining 17 are discovery / exploration surfaces not yet tied to a delivery ticket. Design
+      status below is a heuristic read from page and section names &mdash; treat it as a hint, not a source of truth.</p>
+
+    <div class="ah-tablewrap">
+      <table class="ah-table">
+        <caption>Design files carrying a Jira key, joined across the three other sources</caption>
+        <thead>
+          <tr><th scope="col">Jira key</th><th scope="col">Figma file (design status)</th><th scope="col">Jira status</th><th scope="col">GitHub PR</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="ah-key">LPD-74322</td><td>RAG on AI Hub <span class="ah-pill ah-pill--neutral">status n/a</span></td><td><span class="ah-pill ah-pill--ok">Cerrada</span> · Spike</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
+          <tr><td class="ah-key">LPD-74333</td><td>Metrics design proposals <span class="ah-pill ah-pill--info">Exploration</span></td><td><span class="ah-pill ah-pill--ok">Cerrada</span> · Spike</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
+          <tr><td class="ah-key">LPD-74337</td><td>Instructions &amp; Guardrails <span class="ah-pill ah-pill--neutral">status n/a</span></td><td><span class="ah-pill ah-pill--ok">Cerrada</span> · Spike</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
+          <tr><td class="ah-key">LPD-74339</td><td>Create &amp; Edit Agents <span class="ah-pill ah-pill--neutral">status n/a</span></td><td><span class="ah-pill ah-pill--ok">Cerrada</span> · Spike</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
+          <tr><td class="ah-key">LPD-77479</td><td>EPIC Disclaimer for AI Features <span class="ah-pill ah-pill--neutral">status n/a</span></td><td><span class="ah-pill ah-pill--info">Beta</span> · Epic</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
+          <tr><td class="ah-key">LPD-91076</td><td>Monitoring UI for Audit Logs <span class="ah-pill ah-pill--warn">Draft</span></td><td><span class="ah-pill ah-pill--ok">Cerrada</span> · Historia</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
+          <tr><td class="ah-key">LPD-92796</td><td>Tier-aware UI <span class="ah-pill ah-pill--warn">WIP</span></td><td><span class="ah-pill ah-pill--info">En revisión</span> · Spike</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
+          <tr><td class="ah-key">LPD-92801</td><td>LLM Configurations <span class="ah-pill ah-pill--neutral">status n/a</span></td><td><span class="ah-pill ah-pill--info">En revisión</span> · Spike</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
+          <tr><td class="ah-key">LPD-95084</td><td>HTTP Request Node <span class="ah-pill ah-pill--neutral">status n/a</span></td><td><span class="ah-pill ah-pill--info">En revisión</span> · Design task</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
+          <tr><td class="ah-key">LPD-95093</td><td>Admin chat history review interface <span class="ah-pill ah-pill--info">In review</span></td><td><span class="ah-pill ah-pill--info">En revisión</span> · Design task</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ah-grid-2" style="margin-top:var(--sp-4)">
+      <div class="ah-card">
+        <h3 class="ah-h3">Discovery / exploration (no Jira key)</h3>
+        <p class="ah-muted" style="font-size:var(--font-size-sm)">17 files that scope the product ahead of tickets:</p>
+        <ul class="ah-list">
+          <li>[Discovery] AI Agents in Page Builder, AI Hub Phase 2, Metrics in the AI Hub</li>
+          <li>AI Hub Home, Menu, Patterns Library, AI Library, Settings Tab</li>
+          <li>Centralized MCP Server configuration, Liferay-Managed Agents &amp; Vendor Model Mapping</li>
+          <li>Agent issue reporting &amp; support, Click-to-chat agent, Errors in AI Components, New Workflow UIs</li>
+        </ul>
+      </div>
+      <div class="ah-card">
+        <h3 class="ah-h3">Alignment read</h3>
+        <ul class="ah-list">
+          <li><strong>Design leads, engineering hasn&rsquo;t started.</strong> None of the 10 keyed design files
+            has a matching PR (open or closed) in the public fork &mdash; design is a stage ahead of public code.</li>
+          <li><strong>Closed spikes, live design.</strong> LPD-74322/74337/74339/74333 are Jira spikes marked
+            <em>Cerrada</em>; the design proposals they produced live on in Figma as the reference.</li>
+          <li><strong>In-flight, converging.</strong> LPD-92796, 92801, 95084, 95093 are <em>En revisión</em> in
+            both Jira and (where readable) Figma &mdash; the healthiest design/delivery agreement in the set.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="ah-muted" style="margin-top:var(--sp-3);font-size:var(--font-size-sm)">
+      Captured 1 July 2026 via <code>skills/figma-project-state</code> (Figma REST, stdlib only). Raw inventory:
+      <code>figma_state.json</code>. Design status is heuristic; several files encode no status keyword in their
+      top-level names, shown here as <span class="ah-pill ah-pill--neutral">status n/a</span>.</p>
+  </section>
+
+  <footer class="ah-footer">
+    <p><strong>Provenance.</strong> Jira via connected Atlassian data (text-matched to "AI Hub", counts are
+      floor values and include some tangential sales/marketing items). GitHub via the public fork
+      <code>liferay-ai-hub/liferay-portal</code>. Code via raw source on <code>master</code>. Figma via the
+      REST API over project <code>490735323</code> (27 files, 2 unsupported skipped); design status is heuristic.
+      Statuses appear mixed English and Spanish due to instance localization.</p>
+    <p style="margin-top:var(--sp-2)">Styling: Lexicon Vanilla tokens and components
+      (<code>liferay-design/lexicon-vanilla</code>). Generated 1 July 2026.</p>
+  </footer>
+
+</main>
+</body>
+</html>
