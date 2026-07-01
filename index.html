@@ -88,6 +88,99 @@
     </div>
   </div>
 
+  <!-- ================= STRATEGIC PICTURE ================= -->
+  <section class="ah-section" aria-labelledby="sum-h">
+    <p class="ah-eyebrow">The strategic picture</p>
+    <h2 class="ah-h2" id="sum-h">Three things to take away</h2>
+    <div class="ah-grid-3">
+      <div class="ah-concl ah-concl--ok">
+        <div class="ah-concl__kicker">Commercial</div>
+        <div class="ah-concl__head">Paid public beta is live and shipping fast</div>
+        <p class="ah-concl__text">The marketplace / billing milestone (SFDC-1307) landed and 60+ items closed in
+          the last 30 days. Momentum is real, not projected.</p>
+      </div>
+      <div class="ah-concl">
+        <div class="ah-concl__kicker">Product</div>
+        <div class="ah-concl__head">Four pillars converge across every source</div>
+        <p class="ah-concl__text">Guardrails, metering, agentic generation and governance all show up in design,
+          Jira, PRs and code &mdash; one coherent bet, not scattered features.</p>
+      </div>
+      <div class="ah-concl ah-concl--warn">
+        <div class="ah-concl__kicker">Watch</div>
+        <div class="ah-concl__head">Design leads; one critical dependency threatens the date</div>
+        <p class="ah-concl__text">27 design files map what ships next (ahead of engineering), while
+          LPDOPS-1854 flags an unconfirmed cross-team dependency risk on the one.liferay timeline.</p>
+      </div>
+    </div>
+
+    <div class="ah-card" style="margin-top:var(--sp-4)">
+      <h3 class="ah-h3">Where the investment is, by product pillar</h3>
+      <p class="ah-muted" style="font-size:var(--font-size-sm)">How strongly each pillar shows up across the four
+        sources (design, Jira, GitHub, code), weighted 0&ndash;4. Detail in the alignment matrix below.</p>
+      <div class="ah-bars" role="img" aria-label="Pillar strength across four sources, weighted out of 4: Guardrails and Model Armor 4, Agentic content generation 4, Token metering and billing 3, Permissions and audit 3, Accessibility and design 2.5, SSO and provisioning 1.5, Infrastructure SaaS to PaaS 1.">
+        <div class="ah-bar"><span class="ah-bar__name">Guardrails / Armor</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:100%"></span></span><span class="ah-bar__val">4.0</span></div>
+        <div class="ah-bar"><span class="ah-bar__name">Agentic generation</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:100%"></span></span><span class="ah-bar__val">4.0</span></div>
+        <div class="ah-bar ah-bar--med"><span class="ah-bar__name">Token metering</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:75%"></span></span><span class="ah-bar__val">3.0</span></div>
+        <div class="ah-bar ah-bar--med"><span class="ah-bar__name">Permissions / audit</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:75%"></span></span><span class="ah-bar__val">3.0</span></div>
+        <div class="ah-bar ah-bar--high"><span class="ah-bar__name">Accessibility / design</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:63%"></span></span><span class="ah-bar__val">2.5</span></div>
+        <div class="ah-bar ah-bar--low"><span class="ah-bar__name">SSO / provisioning</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:38%"></span></span><span class="ah-bar__val">1.5</span></div>
+        <div class="ah-bar ah-bar--low"><span class="ah-bar__name">Infra SaaS&rarr;PaaS</span><span class="ah-bar__track"><span class="ah-bar__fill" style="width:25%"></span></span><span class="ah-bar__val">1.0</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= NEW HERE ================= -->
+  <section class="ah-section" aria-labelledby="new-h">
+    <p class="ah-eyebrow">Orientation</p>
+    <h2 class="ah-h2" id="new-h">New to this project? You should know&hellip;</h2>
+    <div class="ah-card">
+      <ul class="ah-list">
+        <li><strong>AI Hub is not one Jira project.</strong> Work is spread across <span class="ah-key">LPD</span>
+          (product), LRDOCS (docs), LCI (cloud), LPDOPS (ops) and more &mdash; matched here by reference, not by a
+          single board.</li>
+        <li><strong>The code lives in</strong> <code>modules/dxp/apps/ai-hub/</code> of liferay-portal; public work
+          happens in the fork <code>liferay-ai-hub/liferay-portal</code>, where every PR title carries its LPD key.</li>
+        <li><strong>It&rsquo;s in paid public beta</strong>, organized around four pillars: guardrails, token
+          metering, agentic content generation, and governance (permissions &amp; audit).</li>
+        <li><strong>Design runs ahead of code.</strong> One Figma project (<code>490735323</code>) holds 27 files;
+          read it to see what&rsquo;s coming before it reaches engineering.</li>
+        <li><strong>The current top risk is</strong> <span class="ah-key">LPDOPS-1854</span> &mdash; an unconfirmed
+          cross-team dependency against the one.liferay date.</li>
+        <li><strong>Statuses look bilingual.</strong> The Jira instance is localized, so you&rsquo;ll see states in
+          mixed English and Spanish (e.g. <em>Cerrada</em>, <em>En revisión</em>).</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= WHO TO TALK TO ================= -->
+  <section class="ah-section" aria-labelledby="who-h">
+    <p class="ah-eyebrow">People</p>
+    <h2 class="ah-h2" id="who-h">Who you can talk to</h2>
+    <p class="ah-muted">Derived from Jira assignees on the design tickets and from GitHub PR authors on the matching
+      engineering work &mdash; a starting point per area, not an org chart.</p>
+    <div class="ah-tablewrap">
+      <table class="ah-table">
+        <caption>Area &rarr; design owner (Jira / Figma) and engineering (GitHub PR authors)</caption>
+        <thead>
+          <tr><th scope="col">Area</th><th scope="col">Design (Jira / Figma)</th><th scope="col">Engineering (GitHub)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Guardrails / Model Armor</td><td>Pablo Agulla</td><td>MrJohn1911</td></tr>
+          <tr><td>Agents &amp; content generation</td><td>Uge Ortiz Castilla</td><td>DavysonMelo, mariuo, abesousa</td></tr>
+          <tr><td>Metrics &amp; metering</td><td>Uge Ortiz Castilla</td><td>ipeychev <span class="ah-pill ah-pill--neutral">Vertex tagging</span></td></tr>
+          <tr><td>Permissions &amp; audit</td><td>PJ (AI Studio)</td><td>pedro-oliveira446, mariuo</td></tr>
+          <tr><td>Tier-aware UI &amp; LLM config</td><td>Pablo Agulla</td><td><span class="ah-pill ah-pill--neutral">not in code yet</span></td></tr>
+          <tr><td>HTTP Request node</td><td>Antonio Alvino</td><td>fabian-bouche-liferay</td></tr>
+          <tr><td>Admin chat history / assistant chat</td><td>Antonio Alvino</td><td>Mylena-Rodrigues, DavysonMelo</td></tr>
+          <tr><td>AI disclaimer (epic)</td><td>Julia Duarte</td><td><span class="ah-pill ah-pill--neutral">not in code yet</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="ah-muted" style="margin-top:var(--sp-3);font-size:var(--font-size-sm)">
+      Note: <strong>Uge Ortiz Castilla</strong> appears on both sides (GitHub <code>@ugeortiz</code>, PR&nbsp;#387
+      Workflow Designer) &mdash; a useful design/engineering bridge.</p>
+  </section>
+
   <!-- ================= JIRA ================= -->
   <section class="ah-section" aria-labelledby="jira-h">
     <p class="ah-eyebrow">Source 1 · Delivery</p>
@@ -293,60 +386,60 @@
   <section class="ah-section" aria-labelledby="figma-h">
     <p class="ah-eyebrow">Source 4 · Design (captured)</p>
     <h2 class="ah-h2" id="figma-h">Figma state: the AI Hub project</h2>
-    <p class="ah-muted">Figma project <code>490735323</code> (&ldquo;AI Hub&rdquo;), traversed via the REST API.
-      <strong>27 design files</strong> read (2 FigJam/Slides files skipped as unsupported by the file endpoint).
-      Ten files embed an <span class="ah-key">LPD</span> key in their name, which lets design join to Jira and to
-      GitHub. The remaining 17 are discovery / exploration surfaces not yet tied to a delivery ticket. Design
-      status below is a heuristic read from page and section names &mdash; treat it as a hint, not a source of truth.</p>
+    <p class="ah-muted">The whole AI Hub Figma project (<code>490735323</code>) at a glance &mdash; <strong>27 design
+      files</strong> read via the REST API. Ten embed an <span class="ah-key">LPD</span> key, so design joins
+      directly to Jira delivery (the badge on those cards is the live Jira status); the other 17 are discovery /
+      exploration surfaces scoping what comes next. Design status on unkeyed files is a heuristic read of page
+      names &mdash; a hint, not truth.</p>
 
-    <div class="ah-tablewrap">
-      <table class="ah-table">
-        <caption>Design files carrying a Jira key, joined across the three other sources</caption>
-        <thead>
-          <tr><th scope="col">Jira key</th><th scope="col">Figma file (design status)</th><th scope="col">Jira status</th><th scope="col">GitHub PR</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="ah-key">LPD-74322</td><td>RAG on AI Hub <span class="ah-pill ah-pill--neutral">status n/a</span></td><td><span class="ah-pill ah-pill--ok">Cerrada</span> · Spike</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
-          <tr><td class="ah-key">LPD-74333</td><td>Metrics design proposals <span class="ah-pill ah-pill--info">Exploration</span></td><td><span class="ah-pill ah-pill--ok">Cerrada</span> · Spike</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
-          <tr><td class="ah-key">LPD-74337</td><td>Instructions &amp; Guardrails <span class="ah-pill ah-pill--neutral">status n/a</span></td><td><span class="ah-pill ah-pill--ok">Cerrada</span> · Spike</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
-          <tr><td class="ah-key">LPD-74339</td><td>Create &amp; Edit Agents <span class="ah-pill ah-pill--neutral">status n/a</span></td><td><span class="ah-pill ah-pill--ok">Cerrada</span> · Spike</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
-          <tr><td class="ah-key">LPD-77479</td><td>EPIC Disclaimer for AI Features <span class="ah-pill ah-pill--neutral">status n/a</span></td><td><span class="ah-pill ah-pill--info">Beta</span> · Epic</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
-          <tr><td class="ah-key">LPD-91076</td><td>Monitoring UI for Audit Logs <span class="ah-pill ah-pill--warn">Draft</span></td><td><span class="ah-pill ah-pill--ok">Cerrada</span> · Historia</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
-          <tr><td class="ah-key">LPD-92796</td><td>Tier-aware UI <span class="ah-pill ah-pill--warn">WIP</span></td><td><span class="ah-pill ah-pill--info">En revisión</span> · Spike</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
-          <tr><td class="ah-key">LPD-92801</td><td>LLM Configurations <span class="ah-pill ah-pill--neutral">status n/a</span></td><td><span class="ah-pill ah-pill--info">En revisión</span> · Spike</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
-          <tr><td class="ah-key">LPD-95084</td><td>HTTP Request Node <span class="ah-pill ah-pill--neutral">status n/a</span></td><td><span class="ah-pill ah-pill--info">En revisión</span> · Design task</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
-          <tr><td class="ah-key">LPD-95093</td><td>Admin chat history review interface <span class="ah-pill ah-pill--info">In review</span></td><td><span class="ah-pill ah-pill--info">En revisión</span> · Design task</td><td><span class="ah-pill ah-pill--neutral">No PR</span></td></tr>
-        </tbody>
-      </table>
+    <div class="ah-card" style="margin-top:var(--sp-4)">
+      <h3 class="ah-h3">What design tells us that the other sources don&rsquo;t</h3>
+      <ul class="ah-list">
+        <li><strong>Design is the leading indicator.</strong> The 10 keyed files (top row below) are what
+          engineering builds next; the 17 discovery files are the pipeline after that &mdash; Phase 2, page-builder
+          agents, a centralized MCP server, vendor model mapping.</li>
+        <li><strong>Converging now:</strong> Tier-aware UI (LPD-92796), LLM configuration (LPD-92801), HTTP
+          Request node (LPD-95084) and Admin chat history (LPD-95093) are <em>En revisión</em> in Jira with live
+          design &mdash; the next wave to reach code.</li>
+        <li><strong>Foundations already explored:</strong> RAG, Instructions &amp; Guardrails, Create/Edit Agents
+          and Metrics were design spikes, now <em>Cerrada</em>; their Figma files remain the reference.</li>
+      </ul>
     </div>
 
-    <div class="ah-grid-2" style="margin-top:var(--sp-4)">
-      <div class="ah-card">
-        <h3 class="ah-h3">Discovery / exploration (no Jira key)</h3>
-        <p class="ah-muted" style="font-size:var(--font-size-sm)">17 files that scope the product ahead of tickets:</p>
-        <ul class="ah-list">
-          <li>[Discovery] AI Agents in Page Builder, AI Hub Phase 2, Metrics in the AI Hub</li>
-          <li>AI Hub Home, Menu, Patterns Library, AI Library, Settings Tab</li>
-          <li>Centralized MCP Server configuration, Liferay-Managed Agents &amp; Vendor Model Mapping</li>
-          <li>Agent issue reporting &amp; support, Click-to-chat agent, Errors in AI Components, New Workflow UIs</li>
-        </ul>
-      </div>
-      <div class="ah-card">
-        <h3 class="ah-h3">Alignment read</h3>
-        <ul class="ah-list">
-          <li><strong>Design leads, engineering hasn&rsquo;t started.</strong> None of the 10 keyed design files
-            has a matching PR (open or closed) in the public fork &mdash; design is a stage ahead of public code.</li>
-          <li><strong>Closed spikes, live design.</strong> LPD-74322/74337/74339/74333 are Jira spikes marked
-            <em>Cerrada</em>; the design proposals they produced live on in Figma as the reference.</li>
-          <li><strong>In-flight, converging.</strong> LPD-92796, 92801, 95084, 95093 are <em>En revisión</em> in
-            both Jira and (where readable) Figma &mdash; the healthiest design/delivery agreement in the set.</li>
-        </ul>
-      </div>
+    <div class="ah-gallery">
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/3mS9GXr2uDtaaSsWkjuJeF.png" alt="Figma thumbnail: LPD-74322-Retrieval Augmented Generation (RAG) on AI Hub" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">LPD-74322-Retrieval Augmented Generation (RAG) on AI Hub</span><span class="ah-thumb__meta"><span class="ah-key">LPD-74322</span> <span class="ah-pill ah-pill--ok">Cerrada</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/ELZlPHy9bbTsjj7rLtrn2S.png" alt="Figma thumbnail: LPD-74333-Design proposals for Metrics in the AI Hub" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">LPD-74333-Design proposals for Metrics in the AI Hub</span><span class="ah-thumb__meta"><span class="ah-key">LPD-74333</span> <span class="ah-pill ah-pill--ok">Cerrada</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/QkM0KsQ6oKBfZj2vlNW6zO.png" alt="Figma thumbnail: LPD-74337 - Design Instructions &amp; Guardrails" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">LPD-74337 - Design Instructions &amp; Guardrails</span><span class="ah-thumb__meta"><span class="ah-key">LPD-74337</span> <span class="ah-pill ah-pill--ok">Cerrada</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/PSw66VDsP61XQnqGZAR9X8.png" alt="Figma thumbnail: LPD-74339 - Create &amp; Edit Agents" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">LPD-74339 - Create &amp; Edit Agents</span><span class="ah-thumb__meta"><span class="ah-key">LPD-74339</span> <span class="ah-pill ah-pill--ok">Cerrada</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/oUUj9ejawIeNsyKSNrRpiX.png" alt="Figma thumbnail: LPD-77479 EPIC Disclaimer for AI Features" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">LPD-77479 EPIC Disclaimer for AI Features</span><span class="ah-thumb__meta"><span class="ah-key">LPD-77479</span> <span class="ah-pill ah-pill--info">Beta</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/72ixjw2xbv0icVwAa4Cfks.png" alt="Figma thumbnail: LPD-91076-AI Hub Monitoring UI for Audit Logs" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">LPD-91076-AI Hub Monitoring UI for Audit Logs</span><span class="ah-thumb__meta"><span class="ah-key">LPD-91076</span> <span class="ah-pill ah-pill--ok">Cerrada</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/RlNIelNeIyPSdiFVb6frte.png" alt="Figma thumbnail: LPD-92796 - Design the Tier-aware UI" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">LPD-92796 - Design the Tier-aware UI</span><span class="ah-thumb__meta"><span class="ah-key">LPD-92796</span> <span class="ah-pill ah-pill--info">En revisión</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/EzJXXBh98JFo7Z0ErdCY1F.png" alt="Figma thumbnail: LPD-92801 Design LLM Configurations" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">LPD-92801 Design LLM Configurations</span><span class="ah-thumb__meta"><span class="ah-key">LPD-92801</span> <span class="ah-pill ah-pill--info">En revisión</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/seG2ff1uBWbmdJzSNsqd4F.png" alt="Figma thumbnail: LPD-95084 - HTTP Request Node" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">LPD-95084 - HTTP Request Node</span><span class="ah-thumb__meta"><span class="ah-key">LPD-95084</span> <span class="ah-pill ah-pill--info">En revisión</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/FqPuPRSV15QGkU8yKpg0vB.png" alt="Figma thumbnail: LPD-95093 - Admin chat history review interface" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">LPD-95093 - Admin chat history review interface</span><span class="ah-thumb__meta"><span class="ah-key">LPD-95093</span> <span class="ah-pill ah-pill--info">En revisión</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/tdBRwXvlQJUkzkxhoZlaaE.png" alt="Figma thumbnail: (Discovery) AI Hub" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">(Discovery) AI Hub</span><span class="ah-thumb__meta"><span class="ah-pill ah-pill--warn">WIP</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/lcD8H9wtQdMKhy73xiS285.png" alt="Figma thumbnail: [Discovery] AI Agents in Page Builder" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">[Discovery] AI Agents in Page Builder</span><span class="ah-thumb__meta"><span class="ah-pill ah-pill--ok">Ready</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/ElegKVxuku2bs7GQqLE2wP.png" alt="Figma thumbnail: [Discovery] AI Hub Phase 2" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">[Discovery] AI Hub Phase 2</span><span class="ah-thumb__meta"><span class="ah-pill ah-pill--neutral">Exploration</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/IA8EDqmjkbww3FqIPriflJ.png" alt="Figma thumbnail: [Discovery] Metrics in the AI Hub" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">[Discovery] Metrics in the AI Hub</span><span class="ah-thumb__meta"><span class="ah-pill ah-pill--ok">Ready</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/TEDor5BDlfrarJBlxo3fWU.png" alt="Figma thumbnail: AI Hub Home" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">AI Hub Home</span><span class="ah-thumb__meta"><span class="ah-pill ah-pill--neutral">Exploration</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/Y5kw88C2kO2HpOgvJLoPpe.png" alt="Figma thumbnail: AI Hub Menu" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">AI Hub Menu</span><span class="ah-thumb__meta"><span class="ah-pill ah-pill--neutral">status n/a</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/z9oPLslyrHJum5kya6fFKN.png" alt="Figma thumbnail: AI Hub Patterns Library" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">AI Hub Patterns Library</span><span class="ah-thumb__meta"><span class="ah-pill ah-pill--neutral">status n/a</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/EDvXehNDrfAoRXc4n04N45.png" alt="Figma thumbnail: AI Library" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">AI Library</span><span class="ah-thumb__meta"><span class="ah-pill ah-pill--neutral">status n/a</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/bNta4Kyw68USeXPRbatfIA.png" alt="Figma thumbnail: Centralized MCP Server configuration" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">Centralized MCP Server configuration</span><span class="ah-thumb__meta"><span class="ah-pill ah-pill--neutral">status n/a</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/0EqlZbunO8gHfU1Qcercj3.png" alt="Figma thumbnail: Design a way to support a chat agent as Click to chat" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">Design a way to support a chat agent as Click to chat</span><span class="ah-thumb__meta"><span class="ah-pill ah-pill--neutral">status n/a</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/3oylWjbmySKRIOByCpU4On.png" alt="Figma thumbnail: Design Agent&#x27;s issue reporting and support methods" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">Design Agent&#x27;s issue reporting and support methods</span><span class="ah-thumb__meta"><span class="ah-pill ah-pill--warn">WIP</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/9xjNx9JpsCxghw5V4zU3gS.png" alt="Figma thumbnail: Design AI Hub" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">Design AI Hub</span><span class="ah-thumb__meta"><span class="ah-pill ah-pill--info">In review</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/6gqcRLoQSFFLQTahJPKdhk.png" alt="Figma thumbnail: Discovery how to Agent issue reporting" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">Discovery how to Agent issue reporting</span><span class="ah-thumb__meta"><span class="ah-pill ah-pill--ok">Final</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/JhgdtvAavcyX8Md5HnTnOY.png" alt="Figma thumbnail: Errors in AI Components" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">Errors in AI Components</span><span class="ah-thumb__meta"><span class="ah-pill ah-pill--neutral">status n/a</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/48cOaQZSYHaDGC2QYPXIDi.png" alt="Figma thumbnail: Liferay-Managed Agents &amp; Vendor Model Mapping" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">Liferay-Managed Agents &amp; Vendor Model Mapping</span><span class="ah-thumb__meta"><span class="ah-pill ah-pill--neutral">status n/a</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/YWCr6pBlRR0xnxbeacqsqE.png" alt="Figma thumbnail: New Workflow UIs (Copy)" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">New Workflow UIs (Copy)</span><span class="ah-thumb__meta"><span class="ah-pill ah-pill--neutral">status n/a</span></span></figcaption></figure>
+          <figure class="ah-thumb"><img class="ah-thumb__img" src="thumbs/Gm13vgRXQjzbZAx7dfvaU6.png" alt="Figma thumbnail: Settings Tab (Configurations)" loading="lazy" width="400" height="300"><figcaption class="ah-thumb__body"><span class="ah-thumb__name">Settings Tab (Configurations)</span><span class="ah-thumb__meta"><span class="ah-pill ah-pill--neutral">status n/a</span></span></figcaption></figure>
     </div>
     <p class="ah-muted" style="margin-top:var(--sp-3);font-size:var(--font-size-sm)">
-      Captured 1 July 2026 via <code>skills/figma-project-state</code> (Figma REST, stdlib only). Raw inventory:
-      <code>figma_state.json</code>. Design status is heuristic; several files encode no status keyword in their
-      top-level names, shown here as <span class="ah-pill ah-pill--neutral">status n/a</span>.</p>
+      Top row = the 10 files carrying an <span class="ah-key">LPD</span> key (badge shows the Jira status);
+      the rest are discovery / exploration surfaces with a heuristic design-status badge. Thumbnails and inventory
+      captured 1 July 2026 via <code>skills/figma-project-state</code> (Figma REST); raw data in
+      <code>figma_state.json</code>. 2 FigJam/Slides files in the project are not shown (unsupported by the file endpoint).</p>
   </section>
 
   <footer class="ah-footer">
