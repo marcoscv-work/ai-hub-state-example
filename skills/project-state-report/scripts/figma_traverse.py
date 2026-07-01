@@ -5,16 +5,16 @@ figma_traverse.py
 Walk a Figma project (or an explicit list of file keys) via the Figma REST API
 and emit a compact JSON state summary: per file its name, last modified date,
 pages, top-level sections/frames, a heuristic "status" read from those names,
-and any Jira-style issue keys (e.g. LPD-1234) found in names.
+and any Jira-style issue keys (e.g. PROJ-1234) found in names.
 
 Auth: reads the token from the FIGMA_TOKEN environment variable and sends it as
 the X-Figma-Token header (personal access token style). Never pass the token on
 the command line and never hardcode it.
 
 Usage:
-  export FIGMA_TOKEN="figd_xxx"
+  export FIGMA_TOKEN="<your-figma-token>"
   # Whole project (needs projects:read; a plain PAT may get 403, see notes):
-  python3 figma_traverse.py --project 490735323 --out figma_state.json
+  python3 figma_traverse.py --project <PROJECT_ID> --out figma_state.json
   # Or an explicit list of file keys (works with a normal PAT):
   python3 figma_traverse.py --files KEY1,KEY2,KEY3 --out figma_state.json
 

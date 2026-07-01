@@ -5,13 +5,13 @@ linkify_report.py
 Post-process a generated report HTML file and turn reference-like tokens into
 links, WITHOUT ever creating nested links or touching tag internals:
 
-  - Jira issue keys (e.g. LPD-1234)      -> <jira-base>/browse/KEY
+  - Jira issue keys (e.g. PROJ-1234)     -> <jira-base>/browse/KEY
   - Pull request refs (#1234)            -> https://github.com/<repo>/pull/1234
   - The repo slug (owner/name)           -> https://github.com/<repo>
   - Known GitHub usernames               -> https://github.com/<user>
   - A Figma project id                   -> https://www.figma.com/files/project/<id>
 
-Safety model (learned the hard way):
+Safety model:
   1. Existing <a>...</a> blocks are stashed first, so text already inside a link
      (e.g. Figma file links) is never re-wrapped -> no invalid nested <a>.
   2. Only text nodes are linkified: tokenize as `<tag>` OR `text`, transform text
@@ -23,10 +23,10 @@ All links open in a new tab with rel="noopener".
 
 Usage:
   python3 linkify_report.py report/index.html \\
-      --jira-base https://liferay.atlassian.net \\
-      --github-repo liferay-ai-hub/liferay-portal \\
-      --figma-project 490735323 \\
-      --github-users mariuo,MrJohn1911,DavysonMelo
+      --jira-base https://<site>.atlassian.net \\
+      --github-repo <owner/repo> \\
+      --figma-project <PROJECT_ID> \\
+      --github-users user1,user2,user3
 """
 
 import argparse
@@ -37,7 +37,7 @@ def build(args):
     parts = []
     groups = []  # (name, regex)
     if args.github_repo:
-        # Also link a base repo like owner/liferay-portal if provided via --extra-repos
+        # Also link additional repos (e.g. an upstream) if provided via --extra-repos
         repos = [args.github_repo] + [r for r in (args.extra_repos or "").split(",") if r.strip()]
         repo_alt = "|".join(re.escape(r) for r in repos)
         groups.append(("repo", repo_alt))
