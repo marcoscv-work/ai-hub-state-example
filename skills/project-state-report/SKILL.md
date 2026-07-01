@@ -97,11 +97,10 @@ file: `name`, `last_modified`, `pages`, top-level section names, a heuristic
 set; `skipped` lists files the file endpoint can't read (FigJam / Slides return
 `400` — the script skips them and keeps going).
 
-Then vendor the thumbnails locally (the Figma URLs are signed and expire):
-
-```bash
-python3 scripts/fetch_thumbnails.py --state figma_state.json --out <out>/thumbs
-```
+Then **vendor the thumbnails locally** — each file's `thumbnail_url` is a signed,
+short-lived link, so download them to `<out>/thumbs/<fileKey>.<ext>` (a small curl
+loop over the `thumbnail_url` values; detect `png`/`jpg` from the response
+header/magic bytes). Reference the local copies from the report, not the Figma URLs.
 
 ## Step 2 — Join to Jira (Atlassian MCP)
 
@@ -162,15 +161,19 @@ order, visible focus, alt/aria on non-text, AA contrast, reduced-motion.
     strategic "what design tells us" card. No per-row "GitHub PR" column.
 11. **Footer / provenance** — exactly where each number came from and its caveats.
 
-Then linkify every reference-like token:
+**Add links while you generate the HTML** (not as a post-pass) so every
+reference is clickable:
 
-```bash
-python3 scripts/linkify_report.py <out>/index.html \
-    --jira-base https://<site>.atlassian.net \
-    --github-repo <owner/repo> \
-    --figma-project <PROJECT_ID> \
-    --github-users <user1,user2,…>
-```
+- Jira keys → `https://<site>.atlassian.net/browse/<KEY>`
+- PR refs `#N` → `https://github.com/<owner/repo>/pull/<N>`
+- the repo slug → `https://github.com/<owner/repo>`
+- GitHub usernames → `https://github.com/<user>`
+- the Figma project id → `https://www.figma.com/files/project/<PROJECT_ID>`
+- each Figma card → its file URL `https://www.figma.com/design/<fileKey>`
+
+Open external links in a new tab with `rel="noopener"`, and never nest an `<a>`
+inside another `<a>` (e.g. a Jira key that sits inside a card that already links
+to Figma stays plain text).
 
 ## Step 5 — Verify, then optionally deploy
 
@@ -207,8 +210,9 @@ refinement doesn't re-hit the APIs unnecessarily.
 ## Files
 
 - `scripts/figma_traverse.py` — Figma REST traversal (stdlib), skips unsupported files.
-- `scripts/fetch_thumbnails.py` — vendor Figma thumbnails locally.
-- `scripts/linkify_report.py` — safe linkifier (no nested links, tag-aware).
 
-Styling comes from Lexicon Vanilla (`liferay-design/lexicon-vanilla`), referenced
-above — it is not bundled here.
+Everything else is done inline: thumbnails downloaded with a short curl loop
+(Step 1), links added while generating the HTML (Step 4), and styling taken from
+Lexicon Vanilla (`liferay-design/lexicon-vanilla`, referenced above). Only the
+Figma traversal ships as a script because it encodes multi-request logic and edge
+cases worth keeping tested.
