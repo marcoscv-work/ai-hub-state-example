@@ -133,9 +133,12 @@ engineering), not a row to pad with "No PR".
 
 ## Step 4 — Build the report (sections, in this order)
 
-Use the vendored CSS in `assets/css/` (Lexicon Vanilla tokens + the report
-layout). Keep the accessibility floor: semantic landmarks, heading order, visible
-focus, alt/aria on non-text, AA contrast, reduced-motion.
+Style it with **Lexicon Vanilla** (`liferay-design/lexicon-vanilla`,
+https://github.com/liferay-design/lexicon-vanilla) — use its design tokens and
+components as the visual base. How you wire it in is your call: vendor the token
+and component CSS, pull just the pieces you need, or build a thin layout layer on
+top of its tokens. Keep the accessibility floor: semantic landmarks, heading
+order, visible focus, alt/aria on non-text, AA contrast, reduced-motion.
 
 1. **Executive overview** — one-line title + a lead paragraph naming the sources
    and the through-line of where the product is heading.
@@ -192,7 +195,7 @@ Re-run only the affected step (the JSON inventory, the Jira/GitHub join, or just
 the HTML) rather than everything. Keep `figma_state.json` and the raw joins so a
 refinement doesn't re-hit the APIs unnecessarily.
 
-## Template notes (the bundled report.css)
+## Implementation notes (whatever CSS you build)
 
 - **Bar charts**: the fill element must be `display:block`; an inline element
   ignores width/height and renders as an empty track.
@@ -206,5 +209,6 @@ refinement doesn't re-hit the APIs unnecessarily.
 - `scripts/figma_traverse.py` — Figma REST traversal (stdlib), skips unsupported files.
 - `scripts/fetch_thumbnails.py` — vendor Figma thumbnails locally.
 - `scripts/linkify_report.py` — safe linkifier (no nested links, tag-aware).
-- `assets/css/` — `tokens.css`, `components.css` (Lexicon Vanilla), `report.css`
-  (the report layout).
+
+Styling comes from Lexicon Vanilla (`liferay-design/lexicon-vanilla`), referenced
+above — it is not bundled here.
